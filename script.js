@@ -53,7 +53,10 @@ let score = 0;
 
 startBtn.addEventListener("click", startQuiz);
 submitScoreBtn.addEventListener("click", submitScore);
-playAgainBtn.addEventListener("click", startQuiz);
+playAgainBtn.addEventListener("click", function () {
+  startQuiz();
+  document.getElementById("highScoresContainer").classList.add("hidden");
+});
 clearScoresBtn.addEventListener("click", clearHighScores);
 viewHighScoresLink.addEventListener("click", viewHighScores);
 
@@ -63,6 +66,7 @@ function startQuiz() {
   endGameContainer.classList.add("hidden");
   currentQuestionIndex = 0;
   score = 60; // Initial score set to 60 seconds
+  answerMessage.innerText = ""; // Clear previous answer message
   displayQuestion();
   startTimer();
 }
@@ -145,9 +149,9 @@ function viewHighScores() {
     listItem.innerText = `${index + 1}. ${entry.initials}: ${entry.score}s`;
     highScoresContainer.appendChild(listItem);
   });
-  document.getElementById("endGame").classList.add("hidden");
-  document.getElementById("questionContainer").classList.add("hidden");
-  document.getElementById("startBtn").style.display = "none";
+  endGameContainer.classList.add("hidden");
+  questionContainer.classList.add("hidden");
+  startBtn.style.display = "none";
   document.getElementById("highScoresContainer").classList.remove("hidden");
 }
 
