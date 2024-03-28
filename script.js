@@ -2,6 +2,16 @@ const startBtn = document.getElementById("startBtn");
 const questionContainer = document.getElementById("questionContainer");
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
+const answerMessage = document.getElementById("answerMessage");
+const endGameContainer = document.getElementById("endGame");
+const scoreElement = document.getElementById("score");
+const initialsInput = document.getElementById("initials");
+const submitScoreBtn = document.getElementById("submitScore");
+const highScoresContainer = document.getElementById("highScores");
+const playAgainBtn = document.getElementById("playAgain");
+const clearScoresBtn = document.getElementById("clearScores");
+const viewHighScoresLink = document.getElementById("viewHighScores");
+const timerElement = document.getElementById("timer");
 
 const questions = [
   {
@@ -37,16 +47,26 @@ const questions = [
 ];
 
 let currentQuestionIndex = 0;
+let timer;
+let score = 0;
 
 startBtn.addEventListener("click", startQuiz);
+submitScoreBtn.addEventListener("click", submitScore);
+playAgainBtn.addEventListener("click", startQuiz);
+clearScoresBtn.addEventListener("click", clearHighScores);
+viewHighScoresLink.addEventListener("click", viewHighScores);
 
 function startQuiz() {
   startBtn.style.display = "none";
   questionContainer.classList.remove("hidden");
-  showQuestion();
+  endGameContainer.classList.add("hidden");
+  currentQuestionIndex = 0;
+  score = 60; // Initial score set to 60 seconds
+  displayQuestion();
+  startTimer();
 }
 
-function showQuestion() {
+function displayQuestion() {
   const question = questions[currentQuestionIndex];
   questionElement.innerText = question.question;
   optionsElement.innerHTML = "";
@@ -54,23 +74,86 @@ function showQuestion() {
   question.options.forEach((option) => {
     const button = document.createElement("button");
     button.innerText = option;
-    button.addEventListener("click", () => selectOption(option));
+    button.addEventListener("click", () => answerQuestion(option));
     optionsElement.appendChild(button);
   });
 }
 
-function selectOption(selectedOption) {
+function answerQuestion(selectedOption) {
   const question = questions[currentQuestionIndex];
   if (selectedOption === question.answer) {
-    alert("Correct!");
+    answerMessage.innerText = "Correct!";
   } else {
-    alert("Incorrect!");
+    answerMessage.innerText = "Wrong!";
+    score -= 10; // Deduct 10 seconds for wrong answer
+    if (score < 0) score = 0; // Ensure score does not go negative
   }
+
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
-    showQuestion();
+    setTimeout(() => {
+      answerMessage.innerText = "";
+      displayQuestion();
+    }, 1000);
   } else {
-    alert("Quiz finished!");
-    // You can add code here to handle what happens when the quiz finishes
+    endGame();
   }
+}
+
+function startTimer() {
+  timer = setInterval(() => {
+    if (score > 0) {
+      score--;
+      displayScore();
+    } else {
+      clearInterval(timer);
+      endGame();
+    }
+  }, 1000);
+}
+
+function displayScore() {
+  timerElement.innerText = score + "s";
+}
+
+function endGame() {
+  clearInterval(timer);
+  questionContainer.classList.add("hidden");
+  endGameContainer.classList.remove("hidden");
+  scoreElement.innerText = score + "s";
+  displayHighScores();
+}
+
+function submitScore() {
+  const initials = initialsInput.value.trim();
+  if (initials !== "") {
+    const highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+    highScores.push({ initials, score });
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    initialsInput.value = "";
+    displayHighScores();
+  }
+}
+
+function displayHighScores() {
+  highScoresContainer.innerHTML = "";
+  const highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+  highScores.sort((a, b) => b.score - a.score);
+  highScores.forEach((entry, index) => {
+    const listItem = document.createElement("li");
+    listItem.innerText = `${index + 1}. ${entry.initials}: ${entry.score}s`;
+    highScoresContainer.appendChild(listItem);
+  });
+}
+
+function clearHighScores() {
+  localStorage.removeItem("highScores");
+  displayHighScores();
+}
+
+function viewHighScores() {
+  displayHighScores();
+  endGameContainer.classList.add("hidden");
+  questionContainer.classList.add("hidden");
+  startBtn.style.display = "none";
 }

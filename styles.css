@@ -4,6 +4,21 @@ body {
   padding: 0;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header #viewHighScores {
+  text-decoration: none;
+  color: blue;
+}
+
+#timer {
+  font-size: 16px;
+}
+
 .container {
   max-width: 600px;
   margin: 50px auto;
@@ -30,4 +45,12 @@ button {
   padding: 10px 0;
   margin-top: 10px;
   font-size: 16px;
+}
+
+#answerMessage {
+  margin-top: 10px;
+}
+
+#endGame {
+  margin-top: 20px;
 }
