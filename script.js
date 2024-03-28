@@ -9,7 +9,31 @@ const questions = [
     options: ["London", "Paris", "Berlin", "Madrid"],
     answer: "Paris",
   },
-  // Add more questions as needed
+  {
+    question: "What is the largest planet in our solar system?",
+    options: ["Mars", "Venus", "Jupiter", "Saturn"],
+    answer: "Jupiter",
+  },
+  {
+    question: 'Who wrote "Romeo and Juliet"?',
+    options: [
+      "William Shakespeare",
+      "Jane Austen",
+      "Charles Dickens",
+      "Mark Twain",
+    ],
+    answer: "William Shakespeare",
+  },
+  {
+    question: "What is the chemical symbol for water?",
+    options: ["O", "W", "H2O", "H"],
+    answer: "H2O",
+  },
+  {
+    question: "Which country is known as the Land of the Rising Sun?",
+    options: ["China", "India", "Japan", "South Korea"],
+    answer: "Japan",
+  },
 ];
 
 let currentQuestionIndex = 0;
