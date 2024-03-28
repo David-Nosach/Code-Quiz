@@ -22,11 +22,16 @@
             <p id="answerMessage"></p>
         </div>
         <div id="endGame" class="hidden">
-            <h2>Game Over!</h2>
-            <p>Your Score: <span id="score"></span></p>
-            <input type="text" id="initials" placeholder="Enter your initials">
-            <button id="submitScore">Submit</button>
-            <div id="highScores"></div>
+            <h2 id="endGameTitle">All Done!</h2>
+            <p>Your Final Score: <span id="finalScore"></span></p>
+            <div id="initialsSection">
+                <input type="text" id="initials" placeholder="Enter your initials">
+                <button id="submitScore">Submit</button>
+            </div>
+        </div>
+        <div id="highScoresContainer" class="hidden">
+            <h2>High Scores</h2>
+            <ul id="highScores"></ul>
             <button id="playAgain">Play Again</button>
             <button id="clearScores">Clear High Scores</button>
         </div>

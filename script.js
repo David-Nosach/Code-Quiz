@@ -4,7 +4,8 @@ const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
 const answerMessage = document.getElementById("answerMessage");
 const endGameContainer = document.getElementById("endGame");
-const scoreElement = document.getElementById("score");
+const endGameTitle = document.getElementById("endGameTitle");
+const finalScoreElement = document.getElementById("finalScore");
 const initialsInput = document.getElementById("initials");
 const submitScoreBtn = document.getElementById("submitScore");
 const highScoresContainer = document.getElementById("highScores");
@@ -120,8 +121,8 @@ function endGame() {
   clearInterval(timer);
   questionContainer.classList.add("hidden");
   endGameContainer.classList.remove("hidden");
-  scoreElement.innerText = score + "s";
-  displayHighScores();
+  finalScoreElement.innerText = score + "s";
+  endGameTitle.innerText = "All Done!";
 }
 
 function submitScore() {
@@ -131,29 +132,26 @@ function submitScore() {
     highScores.push({ initials, score });
     localStorage.setItem("highScores", JSON.stringify(highScores));
     initialsInput.value = "";
-    displayHighScores();
+    viewHighScores();
   }
 }
 
-function displayHighScores() {
-  highScoresContainer.innerHTML = "";
+function viewHighScores() {
   const highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
   highScores.sort((a, b) => b.score - a.score);
+  highScoresContainer.innerHTML = "";
   highScores.forEach((entry, index) => {
     const listItem = document.createElement("li");
     listItem.innerText = `${index + 1}. ${entry.initials}: ${entry.score}s`;
     highScoresContainer.appendChild(listItem);
   });
+  document.getElementById("endGame").classList.add("hidden");
+  document.getElementById("questionContainer").classList.add("hidden");
+  document.getElementById("startBtn").style.display = "none";
+  document.getElementById("highScoresContainer").classList.remove("hidden");
 }
 
 function clearHighScores() {
   localStorage.removeItem("highScores");
-  displayHighScores();
-}
-
-function viewHighScores() {
-  displayHighScores();
-  endGameContainer.classList.add("hidden");
-  questionContainer.classList.add("hidden");
-  startBtn.style.display = "none";
+  highScoresContainer.innerHTML = "";
 }
