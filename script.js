@@ -1,5 +1,6 @@
 const startBtn = document.getElementById("startBtn");
 const quizTitle = document.getElementById("quizTitle");
+const instructions = document.getElementById("instructions");
 const questionContainer = document.getElementById("questionContainer");
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
@@ -63,6 +64,7 @@ viewHighScoresLink.addEventListener("click", viewHighScores);
 
 function startQuiz() {
   quizTitle.classList.add("hidden"); // Hide quiz title
+  instructions.classList.add("hidden"); // Hide instructions
   startBtn.style.display = "none";
   questionContainer.classList.remove("hidden");
   endGameContainer.classList.add("hidden");
