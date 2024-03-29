@@ -18,34 +18,52 @@ const timerElement = document.getElementById("timer");
 
 const questions = [
   {
-    question: "What is the capital of France?",
-    options: ["London", "Paris", "Berlin", "Madrid"],
-    answer: "Paris",
+    question: "What is the correct way to declare a variable in JavaScript?",
+    options: ["variable x;", "var x;", "v x;", "x = var;"],
+    answer: "var x;",
   },
   {
-    question: "What is the largest planet in our solar system?",
-    options: ["Mars", "Venus", "Jupiter", "Saturn"],
-    answer: "Jupiter",
-  },
-  {
-    question: 'Who wrote "Romeo and Juliet"?',
+    question:
+      "Which method is used to add a key-value pair to local storage in JavaScript?",
     options: [
-      "William Shakespeare",
-      "Jane Austen",
-      "Charles Dickens",
-      "Mark Twain",
+      "localStorage.setItem(key, value)",
+      "localStorage.add(key, value)",
+      "localStorage.append(key, value)",
+      "localStorage.addPair(key, value)",
     ],
-    answer: "William Shakespeare",
+    answer: "localStorage.setItem(key, value)",
   },
   {
-    question: "What is the chemical symbol for water?",
-    options: ["O", "W", "H2O", "H"],
-    answer: "H2O",
+    question: "What is the purpose of JSON.stringify() in JavaScript?",
+    options: [
+      "To convert a JavaScript object into a JSON string",
+      "To parse a JSON string into a JavaScript object",
+      "To add a key-value pair to a JSON object",
+      "To remove a key-value pair from a JSON object",
+    ],
+    answer: "To convert a JavaScript object into a JSON string",
   },
   {
-    question: "Which country is known as the Land of the Rising Sun?",
-    options: ["China", "India", "Japan", "South Korea"],
-    answer: "Japan",
+    question:
+      "Which method is used to retrieve a value from local storage in JavaScript?",
+    options: [
+      "localStorage.getItem(key)",
+      "localStorage.getValue(key)",
+      "localStorage.fetch(key)",
+      "localStorage.retrieve(key)",
+    ],
+    answer: "localStorage.getItem(key)",
+  },
+  {
+    question:
+      "What happens if you try to store a non-string value in local storage without converting it?",
+    options: [
+      "It gets automatically converted to a string",
+      "It raises an error",
+      "It gets stored as is",
+      "It gets converted to null",
+    ],
+    answer: "It gets automatically converted to a string",
   },
 ];
 
