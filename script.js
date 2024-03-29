@@ -15,8 +15,6 @@ const clearScoresBtn = document.getElementById("clearScores");
 const viewHighScoresLink = document.getElementById("viewHighScores");
 const timerElement = document.getElementById("timer");
 
-const instructions = document.getElementById("instructions");
-
 const questions = [
   {
     question: "What is the capital of France?",
@@ -75,8 +73,6 @@ function startQuiz() {
   startTimer();
   // Remove the "hidden" class from the initials section
   document.getElementById("initialsSection").classList.remove("hidden");
-  // Hide the instructions after starting the quiz
-  instructions.classList.add("hidden");
 }
 
 function displayQuestion() {
