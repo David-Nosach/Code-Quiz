@@ -71,6 +71,8 @@ function startQuiz() {
   answerMessage.innerText = ""; // Clear previous answer message
   displayQuestion();
   startTimer();
+  // Remove the "hidden" class from the initials section
+  document.getElementById("initialsSection").classList.remove("hidden");
 }
 
 function displayQuestion() {
@@ -129,6 +131,14 @@ function endGame() {
   endGameContainer.classList.remove("hidden");
   finalScoreElement.innerText = score + "s";
   endGameTitle.innerText = "All Done!";
+  // Hide the initials section if the high scores page is being displayed
+  if (
+    document.getElementById("highScoresContainer").classList.contains("hidden")
+  ) {
+    document.getElementById("initialsSection").classList.remove("hidden");
+  } else {
+    document.getElementById("initialsSection").classList.add("hidden");
+  }
 }
 
 function submitScore() {
@@ -155,6 +165,8 @@ function viewHighScores() {
   questionContainer.classList.add("hidden");
   startBtn.style.display = "none";
   document.getElementById("highScoresContainer").classList.remove("hidden");
+  // Stop the timer when the high scores page is displayed
+  clearInterval(timer);
 }
 
 function clearHighScores() {
