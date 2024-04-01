@@ -1,3 +1,4 @@
+// Selecting elements from the HTML document
 const startBtn = document.getElementById("startBtn");
 const quizTitle = document.getElementById("quizTitle");
 const instructions = document.getElementById("instructions");
@@ -16,6 +17,7 @@ const clearScoresBtn = document.getElementById("clearScores");
 const viewHighScoresLink = document.getElementById("viewHighScores");
 const timerElement = document.getElementById("timer");
 
+// Array of quiz questions
 const questions = [
   {
     question: "What is the correct way to declare a variable in JavaScript?",
@@ -67,10 +69,12 @@ const questions = [
   },
 ];
 
+// Global variables
 let currentQuestionIndex = 0;
 let timer;
 let score = 0;
 
+// Event listeners for buttons and links
 startBtn.addEventListener("click", startQuiz);
 submitScoreBtn.addEventListener("click", submitScore);
 playAgainBtn.addEventListener("click", function () {
@@ -80,26 +84,30 @@ playAgainBtn.addEventListener("click", function () {
 clearScoresBtn.addEventListener("click", clearHighScores);
 viewHighScoresLink.addEventListener("click", viewHighScores);
 
+// Function to start the quiz
 function startQuiz() {
-  quizTitle.classList.add("hidden"); // Hide quiz title
-  instructions.classList.add("hidden"); // Hide instructions
+  // Hide quiz title and instructions, show question container
+  quizTitle.classList.add("hidden");
+  instructions.classList.add("hidden");
   startBtn.style.display = "none";
   questionContainer.classList.remove("hidden");
   endGameContainer.classList.add("hidden");
   currentQuestionIndex = 0;
   score = 60; // Initial score set to 60 seconds
   answerMessage.innerText = ""; // Clear previous answer message
-  displayQuestion();
-  startTimer();
+  displayQuestion(); // Display the first question
+  startTimer(); // Start the timer
   // Remove the "hidden" class from the initials section
   document.getElementById("initialsSection").classList.remove("hidden");
 }
 
+// Function to display the current question
 function displayQuestion() {
   const question = questions[currentQuestionIndex];
   questionElement.innerText = question.question;
   optionsElement.innerHTML = "";
 
+  // Create buttons for each option
   question.options.forEach((option) => {
     const button = document.createElement("button");
     button.innerText = option;
@@ -108,6 +116,7 @@ function displayQuestion() {
   });
 }
 
+// Function to handle user's answer to the question
 function answerQuestion(selectedOption) {
   const question = questions[currentQuestionIndex];
   if (selectedOption === question.answer) {
@@ -118,17 +127,19 @@ function answerQuestion(selectedOption) {
     if (score < 0) score = 0; // Ensure score does not go negative
   }
 
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    setTimeout(() => {
+  // Move to the next question or end the quiz after a delay
+  setTimeout(() => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
       answerMessage.innerHTML = "";
       displayQuestion();
-    }, 1000);
-  } else {
-    endGame();
-  }
+    } else {
+      endGame();
+    }
+  }, 1000); // Delay before moving to the next question or ending the game
 }
 
+// Function to start the timer
 function startTimer() {
   timer = setInterval(() => {
     if (score > 0) {
@@ -141,10 +152,12 @@ function startTimer() {
   }, 1000);
 }
 
+// Function to display the current score
 function displayScore() {
   timerElement.innerText = score + "s";
 }
 
+// Function to end the quiz
 function endGame() {
   clearInterval(timer);
   questionContainer.classList.add("hidden");
@@ -161,6 +174,7 @@ function endGame() {
   }
 }
 
+// Function to submit the user's score
 function submitScore() {
   const initials = initialsInput.value.trim();
   if (initials !== "") {
@@ -172,6 +186,7 @@ function submitScore() {
   }
 }
 
+// Function to display the high scores
 function viewHighScores() {
   const highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
   highScores.sort((a, b) => b.score - a.score);
@@ -189,6 +204,7 @@ function viewHighScores() {
   clearInterval(timer);
 }
 
+// Function to clear the high scores
 function clearHighScores() {
   localStorage.removeItem("highScores");
   highScoresContainer.innerHTML = "";

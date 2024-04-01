@@ -1,9 +1,11 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
+/* Header Section Styles */
 .header {
   display: flex;
   justify-content: space-between;
@@ -21,6 +23,7 @@ body {
   padding: 5px 10px;
 }
 
+/* Main Content Styles */
 .container {
   max-width: 600px;
   margin: 50px auto;
@@ -58,6 +61,7 @@ button:hover,
   background-color: rgb(218, 112, 214);
 }
 
+/* Question Container Styles */
 #questionContainer {
   margin-top: 20px;
   text-align: left;
@@ -76,6 +80,7 @@ button:hover,
   border-radius: 5px;
 }
 
+/* End Game Section Styles */
 #endGame {
   margin-top: 20px;
 }
@@ -100,6 +105,7 @@ button:hover,
   text-align: center;
 }
 
+/* Initials Input Styles */
 #initials {
   padding: 10px 20px;
   font-size: 18px;
@@ -107,14 +113,10 @@ button:hover,
 }
 
 #initials::placeholder {
-  color: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); /* Adjust the placeholder color and opacity */
+  color: rgba(255, 255, 255, 0.5);
 }
 
+/* High Scores Section Styles */
 ul#highScores {
   list-style-type: none;
   padding: 0;
@@ -123,13 +125,9 @@ ul#highScores {
 }
 
 #highScoresContainer ul#highScores li {
-  padding: 10px; /* Add padding around each list item */
-}
-
-#highScoresContainer ul#highScores li {
-  padding: 5px;
+  padding: 10px;
 }
 
 #highScoresContainer ul#highScores li span {
-  margin-right: 10px; /* Add space between each span element */
+  margin-right: 10px;
 }

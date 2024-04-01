@@ -9,22 +9,35 @@
 </head>
 
 <body>
+    <!-- Header Section -->
     <div class="header">
         <a href="#" id="viewHighScores">View High Scores</a>
         <div id="timer">60s</div>
     </div>
+    <!-- End of Header Section -->
+
+    <!-- Main Content Section -->
     <div class="container">
+        <!-- Quiz Title and Instructions Section -->
         <h1 id="quizTitle">Coding Quiz Challenge</h1>
         <div id="instructions">
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
                 answers will penalize your score/time by ten seconds!</p>
         </div>
+        <!-- End of Quiz Title and Instructions Section -->
+
+        <!-- Start Quiz Button -->
         <button id="startBtn">Start Quiz</button>
+
+        <!-- Question Container -->
         <div id="questionContainer" class="hidden">
             <h2 id="question"></h2>
             <div id="options"></div>
             <p id="answerMessage"></p>
         </div>
+        <!-- End of Question Container -->
+
+        <!-- End Game Section -->
         <div id="endGame" class="hidden">
             <h2 id="endGameTitle">All Done!</h2>
             <p>Your Final Score: <span id="finalScore"></span></p>
@@ -34,13 +47,20 @@
                 <button id="submitScore">Submit</button>
             </div>
         </div>
+        <!-- End of End Game Section -->
+
+        <!-- High Scores Section -->
         <div id="highScoresContainer" class="hidden">
             <h2>High Scores</h2>
             <ul id="highScores"></ul>
             <button id="playAgain">Play Again</button>
             <button id="clearScores">Clear High Scores</button>
         </div>
+        <!-- End of High Scores Section -->
     </div>
+    <!-- End of Main Content Section -->
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 
