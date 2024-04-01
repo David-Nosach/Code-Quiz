@@ -93,7 +93,7 @@ function startQuiz() {
   questionContainer.classList.remove("hidden");
   endGameContainer.classList.add("hidden");
   currentQuestionIndex = 0;
-  score = 60; // Initial score set to 60 seconds
+  score = 75; // Initial score set to 60 seconds
   answerMessage.innerText = ""; // Clear previous answer message
   displayQuestion(); // Display the first question
   startTimer(); // Start the timer
@@ -154,7 +154,7 @@ function startTimer() {
 
 // Function to display the current score
 function displayScore() {
-  timerElement.innerText = score + "s";
+  timerElement.innerText = score;
 }
 
 // Function to end the quiz
@@ -162,7 +162,7 @@ function endGame() {
   clearInterval(timer);
   questionContainer.classList.add("hidden");
   endGameContainer.classList.remove("hidden");
-  finalScoreElement.innerText = score + "s";
+  finalScoreElement.innerText = score;
   endGameTitle.innerText = "All Done!";
   // Hide the initials section if the high scores page is being displayed
   if (
