@@ -111,9 +111,9 @@ function displayQuestion() {
 function answerQuestion(selectedOption) {
   const question = questions[currentQuestionIndex];
   if (selectedOption === question.answer) {
-    answerMessage.innerText = "Correct!";
+    answerMessage.innerHTML = "<span class='correct'>Correct!</span>";
   } else {
-    answerMessage.innerText = "Wrong!";
+    answerMessage.innerHTML = "<span class='wrong'>Wrong!</span>";
     score -= 10; // Deduct 10 seconds for wrong answer
     if (score < 0) score = 0; // Ensure score does not go negative
   }
@@ -121,7 +121,7 @@ function answerQuestion(selectedOption) {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     setTimeout(() => {
-      answerMessage.innerText = "";
+      answerMessage.innerHTML = "";
       displayQuestion();
     }, 1000);
   } else {
