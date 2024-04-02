@@ -6,6 +6,7 @@ The Coding Quiz Challenge is a web application that tests users' knowledge of Ja
 
 <img width="1418" alt="Quiz-Code" src="https://github.com/David-Nosach/Code-Quiz/assets/91391933/17ff1225-6372-49c9-a89f-1758a448de15">
 
+Live Link:
 https://david-nosach.github.io/Code-Quiz/
 
 ## Features
@@ -22,12 +23,3 @@ https://david-nosach.github.io/Code-Quiz/
 - HTML
 - CSS
 - JavaScript
-
-## Usage
-
-1. Clone the repository to your local machine.
-2. Open the `index.html` file in a web browser.
-3. Click on "Start Quiz" to begin.
-4. Answer each question within the time limit.
-5. At the end of the quiz, enter your initials and click "Submit" to save your score.
-6. Click "View High Scores" to see the leaderboard.
